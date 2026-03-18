@@ -1,0 +1,60 @@
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+
+}
+
+model User{
+  id          String    @id @default(cuid())
+  firstname   String
+  lastname    String
+  email       String    @unique
+  password    String
+  avatarUrl   String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt  
+
+  documents   Document[]
+  collaborations DocumentCollaborator[]
+}
+
+model Document{
+  id         String    @id @default(cuid())
+  title      String
+  owner      User      @relation(fields: [ownerId], references:[id])
+  ownerId    String 
+  type       DocumentType      @default(CODE)
+  language   String?
+  content    String?      @default("")
+  createdAt  DateTime  @default(now())   
+  updatedAt  DateTime  @updatedAt
+
+  collaborators DocumentCollaborator[]
+}
+
+enum DocumentType{
+  CODE
+  MARKDOWN
+}
+
+model DocumentCollaborator {
+  id         String   @id @default(cuid())
+  documentId String
+  userId     String
+  role       Role     @default(VIEWER)
+  joinedAt   DateTime @default(now())
+
+  document   Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  user       User     @relation(fields: [userId], references: [id])
+}
+
+enum Role {
+  OWNER
+  EDITOR
+  VIEWER
+}
