@@ -161,7 +161,7 @@ const Editor = () => {
       }
     });
 
-    yText.observe((event, transaction) => {
+    yText.observe((_event, transaction) => {
       if (transaction.origin === "local") return;
       if (transaction.origin === "load") return;
       if (suppressRef.current) return;
