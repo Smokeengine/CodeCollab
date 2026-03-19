@@ -30,7 +30,7 @@ const Register = () => {
       const { token, user_data } = response.data;
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user_data));
-      navigate("/");
+      navigate("/login");
     } catch (err: any) {
       setError(err.response?.data?.message || "Signup failed");
     }
