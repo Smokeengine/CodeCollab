@@ -26,11 +26,25 @@ const Login = () => {
 
   return (
     <div
-      className="min-h-screen w-full bg-cover bg-center"
-      style={{ backgroundImage: "url('/bg-login.jpg')" }}
+      className="min-h-screen w-full flex items-center justify-center relative overflow-hidden"
+      style={{ background: 'linear-gradient(135deg, #0d1117 0%, #0d1f3c 50%, #0d1117 100%)' }}
     >
-      <div className="min-h-screen w-full bg-black/60 flex items-center justify-center">
-        <div className="bg-gray-900 rounded-2xl p-8 w-full max-w-md shadow-2xl border border-gray-700">
+      {/* Grid background */}
+      <div
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage: 'linear-gradient(#4ECDC4 1px, transparent 1px), linear-gradient(90deg, #4ECDC4 1px, transparent 1px)',
+          backgroundSize: '50px 50px'
+        }}
+      />
+
+      {/* Glow effects */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl" />
+
+      {/* Card */}
+      <div className="relative z-10 w-full max-w-md px-4">
+        <div className="bg-gray-900 rounded-2xl p-8 w-full shadow-2xl border border-gray-700">
 
           {/* Logo */}
           <div className="flex justify-center mb-4">
@@ -69,7 +83,7 @@ const Login = () => {
               />
               <button
                 onClick={() => setSeen(!seen)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-200"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-200 cursor-pointer"
               >
                 {seen ? <IoEye /> : <IoMdEyeOff />}
               </button>

@@ -16,8 +16,8 @@ const shareRoutes = require('./Routes/share');
 const uploadRoutes = require('./Routes/upload')
 
 app.use(cors({
-    origin: 'http://localhost:5173',
-    credentials: true
+  origin: ['http://localhost:5173', 'https://codecollab-production-14f7.up.railway.app'],
+  credentials: true
 }))
 
 const io = new Server(server, {
