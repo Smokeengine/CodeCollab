@@ -2,8 +2,9 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-  "start": "npx prisma generate && npx prisma migrate deploy && node app.js",
+"scripts": {
+  "build": "npx prisma generate && npx prisma migrate deploy",
+  "start": "node app.js",
   "dev": "nodemon app.js"
 },
   "keywords": [],
