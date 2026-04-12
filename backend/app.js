@@ -4,10 +4,11 @@ const {Server} = require('socket.io');
 require('dotenv').config();
 
 
+const cors = require('cors')
 const app = express();
 const server = createServer(app);
 const PORT = process.env.PORT || 4000;
-const cors = require('cors')
+
 
 const authRoutes = require('./Routes/auth');
 const auth_middleware = require('./middileware/auth_middleware');
